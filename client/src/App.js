@@ -13,8 +13,6 @@ const App = () => {
 		setSavedList([...savedList, movie]);
 	};
 
-	console.log(savedList);
-
 	if(!savedList) {
 		return <h2>Data Loading</h2>
 	}
@@ -23,11 +21,12 @@ const App = () => {
 		<div>
 			<Switch>
 				<Route path='/movies/:id'>
+					<SavedList list={savedList}/>
 					<Movie />
 				</Route>
 
 				<Route path='/'>
-					<SavedList list={savedList} />
+					<SavedList list={savedList}/>
 					<MovieList />
 				</Route>
 			</Switch>
