@@ -10,7 +10,9 @@ const App = () => {
 	const [savedList, setSavedList] = useState([]);
 
 	const addToSavedList = movie => {
-		setSavedList([...savedList, movie]);
+		if(!savedList.includes(movie)) {
+			setSavedList([...savedList, movie]);
+		}
 	};
 
 	if(!savedList) {
@@ -22,7 +24,7 @@ const App = () => {
 			<Switch>
 				<Route path='/movies/:id'>
 					<SavedList list={savedList}/>
-					<Movie />
+					<Movie addToSavedList={addToSavedList}/>
 				</Route>
 
 				<Route path='/'>
